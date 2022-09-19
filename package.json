@@ -1,0 +1,9 @@
+{
+    "name": "cmp_dako",
+    "description": "Dako - Send API",
+    "license": "GPLv3",
+    "author": "Thomas Hoffmann",
+    "version": "1.0.001",
+    "dependencies": [],
+    "updates": []
+}
