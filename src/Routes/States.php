@@ -7,7 +7,7 @@ use Tualo\Office\Basic\IRoute;
 use Tualo\Office\Dako\StatusList;
 
 
-class Route implements IRoute{
+class States implements IRoute{
     public static function register(){
 
        BasicRoute::add('/dako/statelist',function($matches){
