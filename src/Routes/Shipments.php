@@ -20,7 +20,8 @@ class Shipments implements IRoute{
             App::result('msg',$e->getMessage());
             App::result('success',true);
         }
-       });
+        },array('get','post'),true);
+
 
     }
 }

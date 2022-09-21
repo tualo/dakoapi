@@ -20,7 +20,8 @@ class Route implements IRoute{
             App::result('msg',$e->getMessage());
             App::result('success',true);
         }
-       });
+    },array('get','post'),true);
+
 
 
        BasicRoute::add('/dako/services',function($matches){
@@ -33,7 +34,8 @@ class Route implements IRoute{
             App::result('msg',$e->getMessage());
             App::result('success',true);
         }
-       });
+    },array('get','post'),true);
+
 
 
     }
