@@ -11,12 +11,28 @@ class Route implements IRoute{
     public static function register(){
 
        BasicRoute::add('/dako/products',function($matches){
-        DakoSend::init();
-        App::set('products',DakoSend::products());
+        TualoApplication::contenttype('application/json');
+        try{
+            DakoSend::init();
+            App::result('products',DakoSend::products());
+            App::result('success',true);
+        }catch(\Exception $e){
+            App::result('msg',$e->getMessage());
+            App::result('success',true);
+        }
        });
 
 
        BasicRoute::add('/dako/services',function($matches){
+        TualoApplication::contenttype('application/json');
+        try{
+            DakoSend::init();
+            App::result('services',DakoSend::services());
+            App::result('success',true);
+        }catch(\Exception $e){
+            App::result('msg',$e->getMessage());
+            App::result('success',true);
+        }
        });
 
 

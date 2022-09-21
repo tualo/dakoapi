@@ -14,8 +14,8 @@ class DakoSend {
     public static $api_key = '';
     public static $baseURL = '';
 
-    public static $productsURL ='index.php/api/sale/products/X-API-KEY/{api_key}/api_secret/{api_secret}';
-    public static $servicesURL ='index.php/api/sale/services/X-API-KEY/{api_key}/api_secret/{api_secret}';
+    public static $productsURL ='/index.php/api/sales/products/X-API-KEY/{api_key}/api_secret/{api_secret}';
+    public static $servicesURL ='/index.php/api/sales/services/X-API-KEY/{api_key}/api_secret/{api_secret}';
 
 
     public static function init(){
@@ -51,10 +51,19 @@ class DakoSend {
 
     public static function products(){
         $result = RequestHelper::query(self::prepareURL( self::$productsURL));
-        return $result['products'];
+        if (isset($result['result']) && isset($result['result']['products']) ){
+            return $result['result']['products'];
+        }else{
+            throw new \Exception("DAKO API Error");
+        }
     }
     public static function services(){
         $result = RequestHelper::query(self::prepareURL( self::$servicesURL));
-        return $result['services'];
+        return $result['result']['services'];
+        if (isset($result['result']) && isset($result['result']['services']) ){
+            return $result['result']['services'];
+        }else{
+            throw new \Exception("DAKO API Error");
+        }
     }
 }
