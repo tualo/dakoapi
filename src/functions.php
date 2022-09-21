@@ -16,5 +16,8 @@ require_once "Routes/ProviderRoute.php";
 require_once "SinlgeOrder.php";
 require_once "Routes/SinlgeOrder.php";
 
+require_once "SinlgeLabel.php";
+require_once "Routes/SinlgeLabel.php";
+
 require_once "StatusHistory.php";
 require_once "Routes/StatusHistory.php";
