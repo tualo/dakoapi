@@ -11,7 +11,7 @@ class Route implements IRoute{
     public static function register(){
 
        BasicRoute::add('/dako/products',function($matches){
-        TualoApplication::contenttype('application/json');
+        App::contenttype('application/json');
         try{
             DakoSend::init();
             App::result('products',DakoSend::products());
@@ -24,7 +24,7 @@ class Route implements IRoute{
 
 
        BasicRoute::add('/dako/services',function($matches){
-        TualoApplication::contenttype('application/json');
+        App::contenttype('application/json');
         try{
             DakoSend::init();
             App::result('services',DakoSend::services());
