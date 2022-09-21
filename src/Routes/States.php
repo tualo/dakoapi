@@ -12,6 +12,7 @@ class States implements IRoute{
 
        BasicRoute::add('/dako/statelist',function($matches){
         StatusList::init();
+        App::contenttype('application/json');
         App::result('shipmentStates',StatusList::shipmentStates());
        });
 
