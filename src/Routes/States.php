@@ -14,5 +14,11 @@ class States implements IRoute{
         StatusList::init();
         App::result('shipmentStates',StatusList::shipmentStates());
        });
+
+       BasicRoute::add('/dako/statelist/(?P<type>\w+)',function($matches){
+        StatusList::init();
+        App::result('shipmentStates',StatusList::shipmentStates($matches['type']));
+       });
+       
     }
 }
