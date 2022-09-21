@@ -17,7 +17,8 @@ class DakoSend {
     public static $productsURL = '​/index.php​/api​/sales​/products​/X-API-KEY​/{api_key}​/api_secret​/{api_secret}';
     public static $servicesURL = '​/index.php​/api​/sales​/services/X-API-KEY​/{api_key}​/api_secret​/{api_secret}';
 
-    public static function prepareURL($str){
+
+    public static function init(){
         if (self::$baseURL==''){
             if (defined('DAKO_URL')){
                 self::$baseURL=DAKO_URL;
@@ -40,6 +41,10 @@ class DakoSend {
                 throw new \Exception("DAKO_API_KEY is not set");
             }
         }
+    }
+
+    public static function prepareURL($str){
+        
         return self::$baseURL.str_replace('{api_secret}',self::$api_secret,str_replace('{api_key}',self::$api_key,$str));
     }
 
