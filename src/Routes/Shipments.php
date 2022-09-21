@@ -10,11 +10,11 @@ use Tualo\Office\Dako\Shipments as DShimpents;
 class Shipments implements IRoute{
     public static function register(){
 
-       BasicRoute::add('/dako/products',function($matches){
+       BasicRoute::add('/dako/shipments',function($matches){
         App::contenttype('application/json');
         try{
             DShimpents::init();
-            App::result('products',DShimpents::shipments());
+            App::result('shipments',DShimpents::shipments());
             App::result('success',true);
         }catch(\Exception $e){
             App::result('msg',$e->getMessage());
