@@ -10,10 +10,9 @@ require_once "Routes/States.php";
 require_once "Shipments.php";
 require_once "Routes/Shipments.php";
 
-require_once "Shipmentinfo.php";
-require_once "Routes/ShipmentInfo.php";
+require_once "ProviderRoute.php";
+require_once "Routes/ProviderRoute.php";
+
 
 require_once "StatusHistory.php";
 require_once "Routes/StatusHistory.php";
-// if (class_exists("Tualo\Office\Dako\Middlewares\Middleware")){ }
-// if (class_exists("Tualo\Office\Dako\Routes\Route")){ }
