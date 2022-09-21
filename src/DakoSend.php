@@ -47,7 +47,10 @@ class DakoSend {
     }
 
     public static function defaults($request,$key,$default=null){
-        if (!isset($request[$key])){ 
+        if (!isset($req8uest[$key])){ 
+            if (is_null($default)){
+                throw new \Exception("key *$key* is required");
+            }
             return $default; 
         }else{
             return $request[$key];

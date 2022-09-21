@@ -16,7 +16,7 @@ class SingleOrder extends DakoSend {
         $id = $db->singleValue('select uuid() id',[],'id');
 
         // Idee, hinter diese ID legen wir den Kunden ab, da dieser noch nicht in der API hinterkegt werden kann.
-        
+
 
         $result = RequestHelper::query(self::prepareURL( self::$shipmentURL),
             [
@@ -39,12 +39,12 @@ class SingleOrder extends DakoSend {
                 "destination" => [
                     "prefix"            => self::defaults($request,'destination_prefix',''),
                     "firstname"         => self::defaults($request,'destination_firstname',''),
-                    "lastname"          => self::defaults($request,'destination_lastname',''),
-                    "company"           => self::defaults($request,'destination_company',''),
-                    "street"            => self::defaults($request,'destination_street',''),
-                    "street_number"     => self::defaults($request,'destination_housenumber',''),
-                    "postcode"          => self::defaults($request,'destination_zipcode',''),
-                    "city"              => self::defaults($request,'destination_city',''),
+                    "lastname"          => self::defaults($request,'destination_lastname'),
+                    "company"           => self::defaults($request,'destination_company'),
+                    "street"            => self::defaults($request,'destination_street'),
+                    "street_number"     => self::defaults($request,'destination_housenumber'),
+                    "postcode"          => self::defaults($request,'destination_zipcode'),
+                    "city"              => self::defaults($request,'destination_city'),
                     "district"          => self::defaults($request,'destination_district',''),
                     "country_id"        => self::defaults($request,'destination_country','DE'),
                     "telephone"         => self::defaults($request,'destination_phone',''),
@@ -66,7 +66,7 @@ class SingleOrder extends DakoSend {
                     "email"             => self::defaults($request,'sender_email',''),
                 ],
                 "content"           => self::defaults($request,'content',''),
-                "desired_date"      => self::defaults($request,'desire_date',''),
+                "desired_date"      => self::defaults($request,'desire_date',(new \DateTime())->format('d.m.Y')),
                 "desired_time_from" => self::defaults($request,'desire_time_from','10:00:00'),
                 "desired_time_to"   => self::defaults($request,'desire_time_to','18:00:00'),
                 "reference"         => $id,
