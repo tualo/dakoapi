@@ -45,11 +45,11 @@ class DakoSend {
 
 
     public static function products(){
-        $result = Tualo\Office\Dako\RequestHelper::query(prepareURL( self::$productsURL));
+        $result = RequestHelper::query(self::prepareURL( self::$productsURL));
         return $result['products'];
     }
     public static function services(){
-        $result = Tualo\Office\Dako\RequestHelper::query(prepareURL( self::$servicesURL));
+        $result = RequestHelper::query(self::prepareURL( self::$servicesURL));
         return $result['services'];
     }
 }
