@@ -4,17 +4,17 @@ namespace Tualo\Office\Dako\Routes;
 use Tualo\Office\Basic\TualoApplication as App;
 use Tualo\Office\Basic\Route as BasicRoute;
 use Tualo\Office\Basic\IRoute;
-use Tualo\Office\Dako\ShipmentInfo as DShipmentInfo; 
+use Tualo\Office\Dako\StatusHistory as DStatusHistory; 
 
 
-class ShipmentInfo implements IRoute{
+class StatusHistory implements IRoute{
     public static function register(){
 
-       BasicRoute::add('/dako/shipmentinfo',function($matches){
+       BasicRoute::add('/dako/statushistory',function($matches){
         App::contenttype('application/json');        
         try{
-            DShipmentInfo::init();
-            App::result('shipmentInfo',DShipmentInfo::shipmentInfo());
+            DStatusHistory::init();
+            App::result('statushistory',DStatusHistory::statusHistory());
         }catch(\Exception $e){
             App::result('msg',$e->getMessage());
             App::result('success',true);
