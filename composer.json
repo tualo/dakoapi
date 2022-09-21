@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tualo\\Office\\DBViewer\\": "src/"
+            "Tualo\\Office\\Dako\\": "src/"
         },
         "files": ["src/functions.php"]
     },

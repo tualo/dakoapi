@@ -14,7 +14,8 @@ class ShipmentInfo implements IRoute{
         DShipmentInfo::init();
         App::contenttype('application/json');
         App::result('shipmentInfo',DShipmentInfo::shipmentInfo());
-       });
+        },array('get','post'),true);
+
 
     }
 }

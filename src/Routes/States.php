@@ -14,13 +14,13 @@ class States implements IRoute{
         StatusList::init();
         App::contenttype('application/json');
         App::result('shipmentStates',StatusList::shipmentStates());
-       });
+        },array('get','post'),true);
 
        BasicRoute::add('/dako/statelist/(?P<type>(NEW|PROCESSING|COMPLETE|HOLD|NONE))',function($matches){
         App::contenttype('application/json');
         StatusList::init();
         App::result('shipmentStates',StatusList::shipmentStates($matches['type']));
-       });
+        },array('get','post'),true);
        
     }
 }
