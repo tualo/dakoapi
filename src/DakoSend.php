@@ -45,6 +45,14 @@ class DakoSend {
     public static function prepareURL($str){
         return self::$baseURL.str_replace('{api_secret}',self::$api_secret,str_replace('{api_key}',self::$api_key,$str));
     }
+
+    public static function defaults($request,$key,$default=null){
+        if (!isset($request[$key])){ 
+            return $default; 
+        }else{
+            return $request[$key];
+        }
+    }
     public static function products(){
         $result = RequestHelper::query(self::prepareURL( self::$productsURL));
         if (isset($result['result']) && isset($result['result']['products']) ){

@@ -22,10 +22,10 @@ class SingleOrder extends DakoSend {
                 "shipment"=>[
                     "product_key" => "parcel_small-1",
                     "product_category"=>  "PAKET",
-                    "width" => 30,
-                    "length"=> 50,
-                    "height"=> 50,
-                    "weight"=> 8,
+                    "width" => self::defaults($request,'width',30),
+                    "length"=> self::defaults($request,'length',30),
+                    "height"=> self::defaults($request,'height',30),
+                    "weight"=> self::defaults($request,'weight',5),
                     "services" => [
                         /*
                         "insurance-1",
@@ -34,28 +34,42 @@ class SingleOrder extends DakoSend {
                     ]
                 ],
                 "destination" => [
-                    "prefix" => "Herr",
-                    "firstname" => "Thomas",
-                    "lastname" => "Mustermann",
-                    "company" => "tualo solutions GmbH",
-                    "street" => "Karl-Liebknecht-Str.",
-                    "street_number" => "1d",
-                    "postcode" => "07546",
-                    "city" => "Gera",
-                    "district" => "",
-                    "country_id" => "DE",
-                    "telephone" => "",
-                    "email" => "thomas.hoffmann@tualo.de",
-                    "note" => "Delivery note"
+                    "prefix"            => self::defaults($request,'destination_prefix',''),
+                    "firstname"         => self::defaults($request,'destination_firstname',''),
+                    "lastname"          => self::defaults($request,'destination_lastname',''),
+                    "company"           => self::defaults($request,'destination_company',''),
+                    "street"            => self::defaults($request,'destination_street',''),
+                    "street_number"     => self::defaults($request,'destination_housenumber',''),
+                    "postcode"          => self::defaults($request,'destination_zipcode',''),
+                    "city"              => self::defaults($request,'destination_city',''),
+                    "district"          => self::defaults($request,'destination_district',''),
+                    "country_id"        => self::defaults($request,'destination_country','DE'),
+                    "telephone"         => self::defaults($request,'destination_phone',''),
+                    "email"             => self::defaults($request,'destination_email',''),
+                    "note"              => self::defaults($request,'destination_notes','')
                 ],
-                "content" => "",
-                "desired_date" => "01.02.2034",
-                "desired_time_from" => "10:00:00",
-                "desired_time_to" => "18:00:00",
-                "reference" => "",
-                "create_label" => "0",
-                "callback_url" => str_replace('{id}',$id,DAKO_CALLBACK_URL),
-                "payload" => ""
+                "sender"    => [
+                    "prefix"            => self::defaults($request,'sender_prefix',''),
+                    "firstname"         => self::defaults($request,'sender_firstname',''),
+                    "lastname"          => self::defaults($request,'sender_lastname',''),
+                    "company"           => self::defaults($request,'sender_company',''),
+                    "street"            => self::defaults($request,'sender_street',''),
+                    "street_number"     => self::defaults($request,'sender_housenumber',''),
+                    "postcode"          => self::defaults($request,'sender_zipcode',''),
+                    "city"              => self::defaults($request,'sender_city',''),
+                    "district"          => self::defaults($request,'sender_district',''),
+                    "country_id"        => self::defaults($request,'sender_country','DE'),
+                    "telephone"         => self::defaults($request,'sender_phone',''),
+                    "email"             => self::defaults($request,'sender_email',''),
+                ],
+                "content"           => self::defaults($request,'content',''),
+                "desired_date"      => self::defaults($request,'desire_date',''),
+                "desired_time_from" => self::defaults($request,'desire_time_from','10:00:00'),
+                "desired_time_to"   => self::defaults($request,'desire_time_to','18:00:00'),
+                "reference"         => $id,
+                "create_label"      => "0",
+                "callback_url"      => str_replace('{id}',$id,DAKO_CALLBACK_URL),
+                "payload"           => ""
             ]
         );
         return $result['result'];
