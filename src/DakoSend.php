@@ -10,12 +10,12 @@ use Tualo\Office\Basic\IRoute;
 
 class DakoSend {
 
-    public static $api_secret​ = '';
+    public static $api_secret='';
     public static $api_key = '';
     public static $baseURL = '';
 
-    public static $productsURL = '​/index.php​/api​/sales​/products​/X-API-KEY​/{api_key}​/api_secret​/{api_secret}';
-    public static $servicesURL = '​/index.php​/api​/sales​/services/X-API-KEY​/{api_key}​/api_secret​/{api_secret}';
+    public static $productsURL ='index.php/api/sale/products/X-API-KEY/{api_key}/api_secret/{api_secret}';
+    public static $servicesURL ='index.php/api/sale/services/X-API-KEY/{api_key}/api_secret/{api_secret}';
 
 
     public static function init(){
