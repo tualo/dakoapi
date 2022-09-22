@@ -16,8 +16,6 @@ class SingleOrder extends DakoSend {
         $id = $db->singleValue('select uuid() id',[],'id');
 
         // Idee, hinter diese ID legen wir den Kunden ab, da dieser noch nicht in der API hinterkegt werden kann.
-
-
         $result = RequestHelper::query(self::prepareURL( self::$shipmentURL),
             [
                 'api_secret'=>self::$api_secret,
