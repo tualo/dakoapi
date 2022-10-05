@@ -15,9 +15,10 @@ class StatusHistory implements IRoute{
         try{
             DStatusHistory::init();
             App::result('statushistory',DStatusHistory::statusHistory($matches['id']));
+            App::result('success',true);
         }catch(\Exception $e){
             App::result('msg',$e->getMessage());
-            App::result('success',true);
+            App::result('success',false);
         }
         },['get'],true);
 
