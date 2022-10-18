@@ -23,5 +23,18 @@ class Shipments implements IRoute{
         },array('get','post'),true);
 
 
+        BasicRoute::add('/dako/shipments/sync',function($matches){
+            App::contenttype('application/json');
+            try{
+                DShimpents::init();
+                App::result('shipments',DShimpents::shipments());
+                App::result('success',true);
+            }catch(\Exception $e){
+                App::result('msg',$e->getMessage());
+                App::result('success',true);
+            }
+            },['get'],true);
+
+
     }
 }
