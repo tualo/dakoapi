@@ -27,7 +27,7 @@ class Shipments implements IRoute{
             App::contenttype('application/json');
             try{
                 DShimpents::init();
-                App::result('shipments',DShimpents::shipments());
+                App::result('shipments',DShimpents::syncShipments());
                 App::result('success',true);
             }catch(\Exception $e){
                 App::result('msg',$e->getMessage());
