@@ -9,8 +9,7 @@ use Tualo\Office\Dako\StatusControl as DStatusControl;
 
 class StatusControl implements IRoute{
     public static function register(){
-
-       BasicRoute::add('/dako/setstate/(?P<tracking_id>(\d)+/(?P<code>(\d)+',function($matches){
+       BasicRoute::add('/dako/setstate/(?P<tracking_id>(\d){16})/(?P<code>(\d)+)',function($matches){
         App::contenttype('application/json');        
         try{
             DStatusControl::init();
