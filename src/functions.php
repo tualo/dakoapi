@@ -21,3 +21,7 @@ require_once "Routes/SinlgeLabel.php";
 
 require_once "StatusHistory.php";
 require_once "Routes/StatusHistory.php";
+
+
+require_once "StatusControl.php";
+require_once "Routes/StatusControl.php";
