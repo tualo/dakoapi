@@ -7,7 +7,7 @@ use Tualo\Office\Basic\IRoute;
 use Tualo\Office\Dako\StatusControl as DStatusControl; 
 
 
-class SynSVStates implements IRoute{
+class SyncSVStates implements IRoute{
     public static function register(){
        BasicRoute::add('/dako/syncvstates',function($matches){
         App::contenttype('application/json');    
