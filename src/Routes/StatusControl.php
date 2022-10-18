@@ -13,7 +13,7 @@ class StatusControl implements IRoute{
         App::contenttype('application/json');        
         try{
             DStatusControl::init();
-            $datetime=(new DateTime())->format('Y-m-d H:i:s');
+            $datetime=(new \DateTime())->format('Y-m-d H:i:s');
             $public_note='';
             $tracking_id=$db->singleValue('select id from sv_daten where id={tracking_id} ',$matches,'hybrilog');
             $code=$db->singleValue('select hybrilog from sendungscodes where code={code}',$matches,'hybrilog');
