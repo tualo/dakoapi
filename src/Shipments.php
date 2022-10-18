@@ -31,10 +31,9 @@ class Shipments extends DakoSend {
         $start->add($date_interval);
 
         $period =  $start->format('Y-m-d').'_'.(new \DateTime())->format('Y-m-d');
-        echo $period;
-        //$result = RequestHelper::query(self::prepareURL( self::$shipmentsURL).'?page='.$page);
+        $result = RequestHelper::query(self::prepareURL( self::$shipmentsURL).'?page='.$page.'&period='.$period.'');
 
-        //return $result['result']['shipments'];
+        return $result['result']['shipments'];
     }
 
 }
