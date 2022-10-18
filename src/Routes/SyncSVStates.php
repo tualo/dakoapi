@@ -21,6 +21,7 @@ select
     `sv_daten`.`id` AS `id`,
     sv_stati.datum,
     sv_stati.zeit,
+    sv_stati.status,
     sv_stati.login,
     `sv_daten`.`name` AS `name`,
     `sv_daten`.`strasse` AS `strasse`,
