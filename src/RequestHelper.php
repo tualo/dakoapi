@@ -59,7 +59,7 @@ class RequestHelper {
             self::$last_error_nr = $httpCode;
             self::$last_error_message = "Backend server problems";
             syslog(LOG_ALERT, "httpCode $httpCode query $url ");
-            return false;
+        //    return false;
         }
         return $data;
     }
