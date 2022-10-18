@@ -16,7 +16,7 @@ class StatusControl implements IRoute{
             DStatusControl::init();
             $datetime=(new \DateTime())->format('Y-m-d H:i:s');
             $public_note='';
-            $tracking_id=$db->singleValue('select id from sv_daten where id={tracking_id} ',$matches,'hybrilog');
+            $tracking_id=$db->singleValue('select id from sv_daten where id={tracking_id} ',$matches,'id');
             $code=$db->singleValue('select hybrilog from sendungscodes where code={code}',$matches,'hybrilog');
             if ($code===false) throw new \Exception("Der Code wurde nicht gefunden");
             if ($tracking_id===false) throw new \Exception("Die Sendung wurde nicht gefunden");

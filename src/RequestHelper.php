@@ -37,6 +37,7 @@ class RequestHelper {
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_NOBODY, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        if (is_array($post)) $post = json_encode($post);
         if ( !is_null($post) ) curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 
         $cookie_file = App::get('tempPath').'/api_cookie';
