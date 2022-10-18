@@ -10,7 +10,8 @@ use Tualo\Office\Dako\StatusControl as DStatusControl;
 class StatusControl implements IRoute{
     public static function register(){
        BasicRoute::add('/dako/setstate/(?P<tracking_id>(\d){16})/(?P<code>(\d)+)',function($matches){
-        App::contenttype('application/json');        
+        App::contenttype('application/json');    
+        $db = App::get('session')->getDB();    
         try{
             DStatusControl::init();
             $datetime=(new \DateTime())->format('Y-m-d H:i:s');
