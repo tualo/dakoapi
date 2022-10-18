@@ -18,8 +18,11 @@ class RequestHelper {
         if (
             !is_null($object) && 
             isset($object["status"]) &&
-            ($object["status"]=="success")
-
+            (
+                ($object["status"]=="success") ||
+                ($object["status"]=="bad_request") ||
+                ($object["status"]=="forbidden")
+            )
         ){
             return $object;
         }else{
@@ -37,9 +40,12 @@ class RequestHelper {
         curl_setopt($ch, CURLOPT_HEADER, FALSE);
         curl_setopt($ch, CURLOPT_NOBODY, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        if (is_array($post)) $post = json_encode($post);
-        if ( !is_null($post) ) curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-
+        
+        if ( !is_null($post) ){
+            if (is_array($post)) $post = json_encode($post);
+            curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+        }
         $cookie_file = App::get('tempPath').'/api_cookie';
         curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
         if (file_exists($cookie_file)) curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);

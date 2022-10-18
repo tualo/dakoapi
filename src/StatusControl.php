@@ -14,7 +14,7 @@ class StatusControl extends DakoSend {
 
         $db = App::get('session')->getDB();
 
-        $result = RequestHelper::query(self::prepareURL( self::$shipmentURL),[
+        $result = RequestHelper::query(self::prepareURL( self::$shipmentURL ),[
             'api_secret'=>self::$api_secret,
             'X-API-KEY'=>self::$api_key,
             'tracking_id'=>$tracking_id,
