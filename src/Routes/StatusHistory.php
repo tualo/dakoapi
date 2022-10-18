@@ -10,18 +10,19 @@ use Tualo\Office\Dako\StatusHistory as DStatusHistory;
 class StatusHistory implements IRoute{
     public static function register(){
 
-       BasicRoute::add('/dako/statushistory',function($matches){
+       BasicRoute::add('/dako/statushistory/(?P<id>(\d{16}))',function($matches){
         App::contenttype('application/json');        
         try{
             DStatusHistory::init();
-            App::result('statushistory',DStatusHistory::statusHistory());
+            App::result('statushistory',DStatusHistory::statusHistory($matches['id']));
+            App::result('success',true);
         }catch(\Exception $e){
             App::result('msg',$e->getMessage());
-            App::result('success',true);
+            App::result('success',false);
         }
-        },array('get','post'),true);
+        },['get'],true);
 
-
+// comment
     }
 }
 

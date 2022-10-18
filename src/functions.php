@@ -13,11 +13,11 @@ require_once "Routes/Shipments.php";
 require_once "ProviderRoute.php";
 require_once "Routes/ProviderRoute.php";
 
-require_once "SinlgeOrder.php";
-require_once "Routes/SinlgeOrder.php";
+require_once "SingleOrder.php";
+require_once "Routes/SingleOrder.php";
 
-require_once "SinlgeLabel.php";
-require_once "Routes/SinlgeLabel.php";
+require_once "SingleLabel.php";
+require_once "Routes/SingleLabel.php";
 
 require_once "StatusHistory.php";
 require_once "Routes/StatusHistory.php";
