@@ -1,5 +1,5 @@
 
-            create or replace view view_dako_api_syncsv_state as 
+create or replace view view_dako_api_syncsv_state as 
 select
     `sv_daten`.`id` AS `id`,
     sv_stati.datum,
@@ -19,7 +19,9 @@ select
 from
     (
         `sv_daten`
-        join `sv_stati` on (`sv_stati`.`ID` = `sv_daten`.`id` and sv_stati.sync_hub is null and sv_stati.login<>'dako-import')
+        join `sv_stati` on (`sv_stati`.`ID` = `sv_daten`.`id` 
+        and sv_stati.sync_hub is null 
+        and sv_stati.login<>'dako-import')
         join sendungscodes on sv_stati.status = sendungscodes.code and sendungscodes.hybrilog <> 200
       	
     )
@@ -29,13 +31,14 @@ where
     and `sv_daten`.`datum` > curdate() + interval -16 day
 
 having id like '01%'    
-order by dt desc
+order by dt desc;
 
-            create table sv_stati_dako_errors (
+
+create table sv_stati_dako_errors (
   ID	varchar(50),
   DATUM	date,
   ZEIT	time,
   status	varchar(10),
   primary key (id,datum,zeit,status),
   msg varchar(255)
-            );
+);
