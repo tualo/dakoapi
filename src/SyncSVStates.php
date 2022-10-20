@@ -25,9 +25,16 @@ class SyncSVStates extends DakoSend {
                 $code=$item['hybrilog'];
 
                 try{
-                    $res[]=DStatusControl::do_transition($tracking_id,$code,$datetime,$public_note);
+                    $res[]=[
+                        'id'=>$item['id'],
+                        'dako'=>DStatusControl::do_transition($tracking_id,$code,$datetime,$public_note)
+                    ];
                 }catch(\Exception $e){
                     $item['msg']=substr($e->getMessage(),0,255);
+                    $res[]=[
+                        'id'=>$item['id'],
+                        'dako'=>$item['msg']
+                    ];
                     $db->direct('insert into sv_stati_dako_errors (id,datum,zeit,status,msg) values (
                         {id},{datum},{zeit},{status},{msg}
                     )',$item);
