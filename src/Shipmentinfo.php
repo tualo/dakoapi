@@ -8,7 +8,7 @@ use Tualo\Office\Basic\Route as BasicRoute;
 use Tualo\Office\Basic\IRoute;
 
 
-class Shipmentinfo extends DakoSend {
+class ShipmentInfo extends DakoSend {
     public static  $shipmentURL='/index.php/api/tracking/shipment/X-API-KEY/{api_key}/api_secret/{api_secret}/tracking_id/'; // url aus doku
     public static function shipmentInfo(
         $t_id='0100256518889799'
