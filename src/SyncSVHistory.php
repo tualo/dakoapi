@@ -15,7 +15,7 @@ class SyncSVHistory extends StatusHistory {
         try{
             DStatusControl::init();
 
-            $list=$db->direct('select * from view_dako_api_syncsv_history limit 10',[]);
+            $list=$db->direct('select * from view_dako_api_syncsv_history limit 100',[]);
             $res=[];
 
             $insert_sql = 'insert into dako_status_history (id,state,status,timestamp,details,note)
@@ -31,14 +31,16 @@ class SyncSVHistory extends StatusHistory {
             foreach($list as $item){
 
                 $history = self::statusHistory($item['id']);
-                $db->direct($stat_sql,$item);
-                foreach($history as $elem){
-                    
+                if (is_array($history)){
+                    $db->direct($stat_sql,$item);
+                    foreach($history as $elem){
+                        
 
-                    $elem['id']=$item['id'];
+                        $elem['id']=$item['id'];
 
-                    
-                    $db->direct($insert_sql,$elem);
+                        
+                        $db->direct($insert_sql,$elem);
+                    }
                 }
             }
             App::result('success',true);
