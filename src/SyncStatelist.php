@@ -28,6 +28,7 @@ class SyncStatelist extends StatusList {
                         label=values(label),is_visible=values(is_visible),restricted_to_products=values(restricted_to_products)
                     ';
                     $item['state']=$key;
+                    if ($item['restricted_to_products']=='false') $item['restricted_to_products']='[]';
                     $db->direct($sql,$item);
                 }
                 
