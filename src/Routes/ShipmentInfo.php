@@ -10,11 +10,11 @@ use Tualo\Office\Dako\ShipmentInfo as DShipmentInfo;
 class ShipmentInfo implements IRoute{
     public static function register(){
 
-       BasicRoute::add('/dako/shipmentinfo',function($matches){
+       BasicRoute::add('/dako/shipmentinfo/(?P<id>(\d+))',function($matches){
         App::contenttype('application/json');        
         try{
             DShipmentInfo::init();
-            App::result('shipmentInfo',DShipmentInfo::shipmentInfo());
+            App::result('shipmentInfo',DShipmentInfo::shipmentInfo($matches['id']));
         }catch(\Exception $e){
             App::result('msg',$e->getMessage());
             App::result('success',true);

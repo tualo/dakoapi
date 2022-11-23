@@ -10,7 +10,7 @@ use Tualo\Office\Dako\StatusHistory as DStatusHistory;
 class StatusHistory implements IRoute{
     public static function register(){
 
-       BasicRoute::add('/dako/statushistory/(?P<id>(\d{10}+))',function($matches){
+       BasicRoute::add('/dako/statushistory/(?P<id>(\d+))',function($matches){
         App::contenttype('application/json');        
         try{
             DStatusHistory::init();
