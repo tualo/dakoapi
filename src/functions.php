@@ -28,3 +28,4 @@ require_once "Routes/StatusControl.php";
 require_once "Routes/ShipmentInfo.php";
 
 require_once "Routes/SyncSVStates.php";
+require_once "Routes/SyncStatelist.php";
