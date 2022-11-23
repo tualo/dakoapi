@@ -18,5 +18,13 @@ CREATE TABLE `dako_status_history` (
   PRIMARY KEY (`id`,`timestamp`)
 );
 
+
+CREATE TABLE `dako_status_history_query_stat` (
+  `id` varchar(50) NOT NULL,
+
+  `timestamp` datetime NOT NULL,
+    PRIMARY KEY (`id`,`timestamp`)
+);
+
 create or replace view view_dako_api_syncsv_history as
-select id from sv_daten where modell='Dako';
+select id from sv_daten where modell='Dako' and id not in (select id from dako_status_history_query_stat);

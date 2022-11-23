@@ -17,11 +17,8 @@ class SyncSVHistory extends StatusHistory {
 
             $list=$db->direct('select * from view_dako_api_syncsv_history limit 10',[]);
             $res=[];
-            foreach($list as $item){
 
-                $history = self::statusHistory($item['id']);
-                foreach($history as $elem){
-                    $sql = 'insert into dako_status_history (id,state,status,timestamp,details,note)
+            $insert_sql = 'insert into dako_status_history (id,state,status,timestamp,details,note)
                     values ({id},{state},{status},{timestamp},{details},{note})
                     on duplicate key update 
                         state=values(state),
@@ -30,11 +27,18 @@ class SyncSVHistory extends StatusHistory {
                         details=values(details),
                         note=values(note)
                     ';
+            $stat_sql = 'insert ignore into dako_status_history_query_stat (id,    timestamp) values ({id},now())';
+            foreach($list as $item){
+
+                $history = self::statusHistory($item['id']);
+                $db->direct($stat_sql,$item);
+                foreach($history as $elem){
+                    
 
                     $elem['id']=$item['id'];
 
                     
-                    $db->direct($sql,$elem);
+                    $db->direct($insert_sql,$elem);
                 }
             }
             App::result('success',true);
