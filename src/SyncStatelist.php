@@ -29,6 +29,8 @@ class SyncStatelist extends StatusList {
                     ';
                     $item['state']=$key;
 
+                    
+                    if ($item['is_visible']=='') $item['is_visible']=0;
                     if (is_array($item['restricted_to_products'])) $item['restricted_to_products']=json_encode($item['restricted_to_products']);
                     if ($item['restricted_to_products']=='') $item['restricted_to_products']='[]';
                     $db->direct($sql,$item);
