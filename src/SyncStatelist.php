@@ -22,10 +22,10 @@ class SyncStatelist extends StatusList {
 
                 foreach($list as $item){
                     $sql = 'insert into dako_statelist 
-                        (state,status_code,label,is_visible,restricted_to_products) 
-                        values ({state},{status_code},{label},{is_visible},{restricted_to_products})
+                        (state,status_code,label,is_visible,restricted_to_products,manual) 
+                        values ({state},{status_code},{label},{is_visible},{restricted_to_products},0)
                         on duplicate key update 
-                        label=values(label),is_visible=values(is_visible),restricted_to_products=values(restricted_to_products)
+                        label=values(label),is_visible=values(is_visible),restricted_to_products=values(restricted_to_products),manual=values(manual)
                     ';
                     $item['state']=$key;
 
